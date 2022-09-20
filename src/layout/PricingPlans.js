@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// ✅ Context--------------------------------------------------------------------------------------
+import { GlobalContext } from "../context/Store";
 
 // ✅ Components --------------------------------------------------------------------------------------
 import SinglePricingCard from "./../components/SinglePricingCard";
@@ -9,8 +12,10 @@ import SectionHeading from "./../components/SectionHeading";
 import { singleWebHosting, premiumWebHosting, businessWebHosting } from "./../helpers/PricingData";
 
 const PricingPlans = () => {
+    // ✅ States / Variavbles --------------------------------------------------------------------------------------
+    const { scrollToPricing } = useContext(GlobalContext);
     return (
-        <SectionElement>
+        <SectionElement refsToScroll={scrollToPricing}>
             <div className="flex h-full w-full flex-col items-center gap-16">
                 <SectionHeading>Pricing Plans</SectionHeading>
                 <div className="all_cards flex h-auto w-full flex-row flex-wrap justify-center gap-10 bg-white py-10 px-1 md:px-10 lg:flex-nowrap">

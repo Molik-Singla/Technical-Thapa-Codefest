@@ -76,8 +76,12 @@ const SinglePricingCard = ({
                 <p className="font-open-sans-font text-4xl font-bold text-secondary-color">₹ {planAmount}/mo</p>
                 <button
                     onClick={handleAddToCart}
-                    className="rounded-full bg-secondary-color px-12 py-2 font-rubik-font text-lg font-semibold text-white"
+                    className="animate_on_button_hover relative rounded-sm bg-secondary-color px-12 py-2 font-rubik-font text-lg font-semibold text-white hover:bg-white hover:text-secondary-color"
                 >
+                    <span className="absolute top-0 left-0 bg-secondary-color"></span>
+                    <span className="absolute bottom-0 right-0 bg-secondary-color"></span>
+                    <span className="absolute bottom-0 left-0 bg-secondary-color"></span>
+                    <span className="absolute top-0 right-0 bg-secondary-color"></span>
                     Add to Cart
                 </button>
                 <p className="text-sm text-gray-400">₹{planAmountWhenRenew}/mo when you renew</p>

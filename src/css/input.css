@@ -2,16 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* ✅ Some Bg Changes ----------------------------------------------------------------------------- */
-.bg_gradient{
+.bg_gradient {
     background: linear-gradient(16deg, rgba(17, 164, 239, 1) 0%, rgba(17, 190, 239, 1) 31%);
 }
-.section_background_gradient{
-    background: url("./../Images/SectionBg.svg") no-repeat; 
+.section_background_gradient {
+    background: url("./../Images/SectionBg.svg") no-repeat;
     background-size: cover;
 }
-
 
 /* ✅ Scroll Bar ----------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
@@ -19,18 +17,18 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #F1F1F1;
+    background-color: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #172B4D;
+    background-color: #172b4d;
     border-radius: 40px;
 }
 
 /* ✅ Animations ----------------------------------------------------------------------------- */
 .scale-in-center {
-    -webkit-animation: scale-in-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: scale-in-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes scale-in-center {
@@ -61,17 +59,15 @@
     }
 }
 
-
 .slide-in-right {
-    -webkit-animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-in-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .slide-out-right {
-    -webkit-animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    -webkit-animation: slide-out-right 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+    animation: slide-out-right 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
-
 
 @-webkit-keyframes slide-in-right {
     0% {
@@ -131,21 +127,128 @@
 
 /* ✅ Text Animations -------------------------------------------------------------------------------------------------- */
 .slide-in-right-4s {
-    -webkit-animation: slide-in-right 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-in-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .slide-in-right-5s {
-    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .slide-in-right-6s {
-    -webkit-animation: slide-in-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-in-right 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .slide-in-right-7s {
-    -webkit-animation: slide-in-right 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-in-right 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
+
+
+/* ✅ Animation on Button Hover */
+
+.animate_on_button_hover:hover>span:nth-child(1) , .animate_on_button_hover:hover>span:nth-child(2){
+    width: 0%;
+    height: 2px;
+    /* background-color: white;  */
+
+    animation-name: animate_x;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.animate_on_button_hover:hover>span:nth-child(3),.animate_on_button_hover:hover>span:nth-child(4) {
+    width: 2px;
+    height: 0%;
+    /* background-color: white; */
+
+    animation-name: animate_y;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /* animation-delay: 660ms; */
+}
+@keyframes animate_x {
+    0%{
+         width: 0%;
+    }
+    10%{
+        width: 10%;
+    }
+    20%{
+        width: 20%;
+    }
+    30%{
+        width: 30%;
+    }
+    40%{
+        width: 40%;
+    }
+    50%{
+        width: 50%;
+    }
+    60%{
+        width: 60%;
+    }
+    70%{
+        width: 70%;
+    }
+    80%{
+        width: 80%;
+    }
+    90%{
+        width: 90%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes animate_y {
+    0% {
+        height: 0%;
+    }
+
+    10% {
+        height: 10%;
+    }
+
+    20% {
+        height: 20%;
+    }
+
+    30% {
+        height: 30%;
+    }
+
+    40% {
+        height: 40%;
+    }
+
+    50% {
+        height: 50%;
+    }
+
+    60% {
+        height: 60%;
+    }
+
+    70% {
+        height: 70%;
+    }
+
+    80% {
+        height: 80%;
+    }
+
+    90% {
+        height: 90%;
+    }
+
+    100% {
+        height: 100%;
+    }
+} 

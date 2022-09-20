@@ -11,9 +11,23 @@ const Home = () => {
                     <p className="text-center text-2xl font-bold text-white md:text-3.5xl">Savings to Set Your Website in Motion</p>
                     <p className="text-center text-5xl font-bold text-white md:text-5xl">₹ 149.00/mo</p>
                     <p className="text-center text-white">Make moves with a free domain and SSL included with a four-year subscription.</p>
-                    <button className="mt-8 box-border max-w-max rounded-full border-2 border-transparent bg-secondary-color px-12 py-2 font-rubik-font text-lg font-medium text-white shadow-xl transition-all duration-300 hover:border-2 hover:border-white hover:bg-transparent hover:text-white">
+                    {/* <button className="mt-8 box-border max-w-max rounded-full border-2 border-transparent bg-secondary-color px-12 py-2 font-rubik-font text-lg font-medium text-white shadow-xl transition-all duration-300">
+                        Get Started
+                    </button> */}
+                    <button className="animate_on_button_hover relative mt-8 rounded-sm bg-secondary-color px-12 py-2 font-rubik-font text-lg font-medium text-white shadow-xl transition-all duration-300">
+                        <span className="absolute top-0 left-0 bg-white"></span>
+                        <span className="absolute bottom-0 right-0 bg-white"></span>
+                        <span className="absolute bottom-0 left-0 bg-white"></span>
+                        <span className="absolute top-0 right-0 bg-white"></span>
                         Get Started
                     </button>
+                    {/* <button className="animate_on_button_hover relative p-2 px-5">
+                        <span className="absolute top-0 left-0"></span>
+                        <span className="absolute bottom-0 right-0"></span>
+                        <span className="absolute top-0 left-0"></span>
+                        <span className="absolute top-0 right-0"></span>
+                        Learn More
+                    </button> */}
 
                     <p className="flex items-center gap-2 text-center font-medium text-white">
                         <TiTick className="text-2xl text-green-600" /> Get exclusive 30-day money-back guarantee

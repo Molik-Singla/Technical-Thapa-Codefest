@@ -49,6 +49,7 @@ const Login = () => {
             rememberMe: false,
         });
         notifySuccess(loginOrSignup === "login" ? "Login Successfull" : "Signup Successfull");
+        document.body.style.overflow = "visible";
         setIsLogin(true);
         navigate("/");
     }
@@ -81,8 +82,12 @@ const Login = () => {
                 {isLogin && (
                     <button
                         onClick={handleLogout}
-                        className="absolute right-6 top-4 rounded-xl border-2 border-white px-5 py-0 text-base md:top-2 md:px-7 md:py-1 md:text-lg"
+                        className="animate_on_button_hover absolute right-6 top-4 rounded-sm border-2 border-white px-5 py-0 text-base hover:border-transparent  md:top-2 md:px-7 md:py-1 md:text-lg"
                     >
+                        <span className="absolute top-0 left-0 bg-white"></span>
+                        <span className="absolute bottom-0 right-0 bg-white"></span>
+                        <span className="absolute bottom-0 left-0 bg-white"></span>
+                        <span className="absolute top-0 right-0 bg-white"></span>
                         Logout
                     </button>
                 )}
@@ -146,8 +151,12 @@ const Login = () => {
                             <button
                                 onClick={(evt) => handleLoginSignup(evt)}
                                 type="submit"
-                                className="mt-5 w-full rounded-lg bg-secondary-color px-10 py-2 text-center font-rubik-font text-base  font-semibold text-white outline-none sm:w-auto"
+                                className="animate_on_button_hover relative mt-5 w-full rounded-sm bg-secondary-color px-10 py-2 text-center font-rubik-font text-base font-semibold text-white outline-none hover:bg-white hover:text-secondary-color sm:w-auto"
                             >
+                                <span className="absolute top-0 left-0 bg-secondary-color"></span>
+                                <span className="absolute bottom-0 right-0 bg-secondary-color"></span>
+                                <span className="absolute bottom-0 left-0 bg-secondary-color"></span>
+                                <span className="absolute top-0 right-0 bg-secondary-color"></span>
                                 {loginOrSignup === "login" ? "Login" : "Signup"}
                             </button>
                         </div>

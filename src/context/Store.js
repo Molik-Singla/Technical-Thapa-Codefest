@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useRef } from "react";
 const GlobalContext = createContext();
 
 const Store = ({ children }) => {
@@ -6,8 +6,13 @@ const Store = ({ children }) => {
     const [enableCart, setEnableCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
 
+    const scrollToServices = useRef();
+    const scrollToPricing = useRef();
+
     return (
-        <GlobalContext.Provider value={{ isLogin, setIsLogin, enableCart, setEnableCart, cartItems, setCartItems }}>
+        <GlobalContext.Provider
+            value={{ isLogin, setIsLogin, enableCart, setEnableCart, cartItems, setCartItems, scrollToServices, scrollToPricing }}
+        >
             {children}
         </GlobalContext.Provider>
     );

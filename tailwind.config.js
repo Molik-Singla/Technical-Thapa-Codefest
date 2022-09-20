@@ -51,6 +51,7 @@ module.exports = {
                 "primary-color": "rgb(17,149,239)",
 
                 "secondary-color": "#172B4D",
+                "hover-color": "rgb(10,20,50)",
             },
         },
     },

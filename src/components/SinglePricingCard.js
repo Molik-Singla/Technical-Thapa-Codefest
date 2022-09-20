@@ -4,12 +4,12 @@ import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/Store";
 
 // ✅ Components -------------------------------------------------------------------------------------------
+import { useCookies } from "react-cookie";
+
 import SinglePricingElem from "./SinglePricingElem";
 import { notifySuccess, notifyWarn } from "./../animations/TostifyFunctions";
 
 import SingleHeadingForPricingDetails from "./SingleHeadingForPricingDetails";
-
-import { useCookies } from "react-cookie";
 
 const SinglePricingCard = ({
     pricingPlan,

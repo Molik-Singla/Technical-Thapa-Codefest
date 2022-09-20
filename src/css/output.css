@@ -743,8 +743,8 @@ video {
   height: auto;
 }
 
-.h-\[clamp\(300px\2c 100\%\2c 400px\)\] {
-  height: clamp(300px,100%,400px);
+.h-56 {
+  height: 14rem;
 }
 
 .h-16 {
@@ -769,10 +769,6 @@ video {
 
 .h-4 {
   height: 1rem;
-}
-
-.h-80 {
-  height: 20rem;
 }
 
 .w-full {
@@ -1031,6 +1027,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1137,8 +1137,8 @@ video {
   padding-bottom: 1.75rem;
 }
 
-.pl-3 {
-  padding-left: 0.75rem;
+.pl-5 {
+  padding-left: 1.25rem;
 }
 
 .pt-6 {
@@ -1333,6 +1333,8 @@ video {
   transition-duration: 200ms;
 }
 
+/* ✅ Some Bg Changes ----------------------------------------------------------------------------- */
+
 .bg_gradient{
   background: linear-gradient(16deg, rgba(17, 164, 239, 1) 0%, rgba(17, 190, 239, 1) 31%);
 }
@@ -1342,7 +1344,7 @@ video {
   background-size: cover;
 }
 
-/* Scroll Bar ------------------------------------------------- */
+/* ✅ Scroll Bar ----------------------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -1357,7 +1359,7 @@ video {
   border-radius: 40px;
 }
 
-/* ANimations --------------------------------------------------- */
+/* ✅ Animations ----------------------------------------------------------------------------- */
 
 .scale-in-center {
   -webkit-animation: scale-in-center 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -1672,6 +1674,16 @@ video {
   .md\:px-2 {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .md\:px-1 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .md\:py-16 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .md\:pt-16 {

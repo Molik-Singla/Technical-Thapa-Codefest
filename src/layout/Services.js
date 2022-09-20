@@ -1,4 +1,6 @@
 import React from "react";
+
+// ✅ Components -------------------------------------------------------------------------------------------
 import SectionElement from "./../components/SectionElement";
 import SectionHeading from "./../components/SectionHeading";
 import SingleService from "./../components/SingleService";

@@ -1,4 +1,6 @@
 import React from "react";
+
+// ✅ Icons -------------------------------------------------------------------------------------------
 import { TiTick } from "react-icons/ti";
 
 const SingleService = ({ serviceName, serviceIcon }) => {

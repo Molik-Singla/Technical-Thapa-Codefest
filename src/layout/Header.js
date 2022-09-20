@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
+
+// ✅ Context -------------------------------------------------------------------------------------------
+import { GlobalContext } from "../context/Store";
+
+// ✅ Components -------------------------------------------------------------------------------------------
+import { Outlet, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 // ✅ Icons  -------------------------------------------------------------------------------------------
@@ -6,13 +12,9 @@ import { FiShoppingCart } from "react-icons/fi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 
-import { Outlet, Link } from "react-router-dom";
-import { GlobalContext } from "../context/Store";
-
 const Header = () => {
     // ✅ States / Variables --------------------------------------------------------------------------------
     const [cookies] = useCookies("");
-
     const { setEnableCart } = useContext(GlobalContext);
 
     const [headerAppearence, setHeaderAppearence] = useState("");

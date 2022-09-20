@@ -1,6 +1,13 @@
-import React from "react";
-import SingleHeadingForPricingDetails from "./SingleHeadingForPricingDetails";
+import React, { useContext, useEffect } from "react";
+
+import { GlobalContext } from "../context/Store";
+
 import SinglePricingElem from "./SinglePricingElem";
+import { notifySuccess, notifyWarn } from "./../animations/TostifyFunctions";
+
+import SingleHeadingForPricingDetails from "./SingleHeadingForPricingDetails";
+
+import { useCookies } from "react-cookie";
 
 const SinglePricingCard = ({
     pricingPlan,
@@ -10,9 +17,51 @@ const SinglePricingCard = ({
     additionalClassesToAdd,
     namePlateClassesToAd = "bg-secondary-color",
 }) => {
+    const { cartItems, setCartItems, isLogin } = useContext(GlobalContext);
+
+    const [cookies, setCookie] = useCookies("cart");
+
+    function randomString(strLength, charSet) {
+        var result = [];
+
+        strLength = strLength || 5;
+        charSet = charSet || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        while (strLength--) result.push(charSet.charAt(Math.floor(Math.random() * charSet.length)));
+
+        return result.join("");
+    }
+
+    function handleAddToCart() {
+        if (isLogin) {
+            notifySuccess("Item added to Cart");
+
+            const randomId = randomString(7);
+            setCartItems((prev) => {
+                return [
+                    ...prev,
+                    {
+                        hostingName: planName,
+                        hostingPrice: planAmount,
+                        hostingRenewPrice: planAmountWhenRenew,
+                        randomId: randomId,
+                    },
+                ];
+            });
+        } else notifyWarn("Please do Login or Signup");
+    }
+
+    useEffect(() => {
+        if (isLogin) {
+            console.log(cartItems);
+            setCookie("cart", cartItems, {
+                path: "/",
+            });
+        }
+    }, [cartItems]);
     return (
         <div
-            className={`single_card flex h-auto flex-col gap-7 rounded-2xl border-2 border-gray-200 bg-white font-open-sans-font shadow-lg transition-all duration-500 hover:scale-105 ${additionalClassesToAdd} w-[clamp(310px,100%,320px)]`}
+            className={`single_card flex h-auto flex-col gap-7 rounded-2xl border-2 border-gray-200 bg-white font-open-sans-font shadow-lg transition-all duration-300 hover:scale-105 ${additionalClassesToAdd} w-[clamp(310px,100%,320px)]`}
         >
             <p
                 className={`r w-full rounded-t-lg bg-secondary-color py-3 text-center font-open-sans-font text-lg font-bold text-white ${namePlateClassesToAd}`}
@@ -22,7 +71,12 @@ const SinglePricingCard = ({
             <div className="flex flex-col items-center gap-2">
                 <p>Ideal solution for beginners</p>
                 <p className="font-open-sans-font text-4xl font-bold text-secondary-color">₹ {planAmount}/mo</p>
-                <button className="rounded-full bg-secondary-color px-12 py-2 font-rubik-font text-lg font-semibold text-white">Add to Cart</button>
+                <button
+                    onClick={handleAddToCart}
+                    className="rounded-full bg-secondary-color px-12 py-2 font-rubik-font text-lg font-semibold text-white"
+                >
+                    Add to Cart
+                </button>
                 <p className="text-sm text-gray-400">₹{planAmountWhenRenew}/mo when you renew</p>
             </div>
 

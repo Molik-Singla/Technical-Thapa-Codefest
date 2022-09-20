@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// ✅ Context --------------------------------------------------------------------------------------
+import { GlobalContext } from "./context/Store";
 
 // ✅ Components --------------------------------------------------------------------------------------
+import { useCookies } from "react-cookie";
 import Header from "./layout/Header";
-import Home from "./layout/Home";
-import Services from "./layout/Services";
-import Testimonials from "./layout/Testimonials";
-import PricingPlans from "./layout/PricingPlans";
+import LandingPage from "./layout/LandingPage";
+import Login from "./layout/Login";
+import Cart from "./layout/Cart";
+
+import Tostify from "./animations/Tostify";
 
 const App = () => {
+    // ✅ States / variables --------------------------------------------------------------------------------------
+    const [cookies, setCookie] = useCookies("login");
+    const { setIsLogin, setCartItems } = useContext(GlobalContext);
+
+    // ✅ useeffects --------------------------------------------------------------------------------------
+    useEffect(() => {
+        if (cookies?.cart?.length > 0) setCartItems(cookies.cart);
+        if (cookies?.login?.isLogin === true) setIsLogin(true);
+    }, []);
+
     return (
-        <div className="h-auto">
-            <Header />
-            <Home />
-            <Services />
-            <Testimonials />
-            <PricingPlans />
-        </div>
+        <Tostify>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="login" element={<Login />} />
+                    <Route path="/" element={<Header />}>
+                        <Route path="/" element={<LandingPage />}>
+                            <Route path="" element={<Cart />} />
+                        </Route>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </Tostify>
     );
 };
 

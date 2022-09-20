@@ -11,9 +11,9 @@ import { GlobalContext } from "../context/Store";
 
 const Header = () => {
     // ✅ States / Variables --------------------------------------------------------------------------------
-    const [cookies, setCookie] = useCookies("login");
+    const [cookies] = useCookies("");
 
-    const { enableCart, setEnableCart } = useContext(GlobalContext);
+    const { setEnableCart } = useContext(GlobalContext);
 
     const [headerAppearence, setHeaderAppearence] = useState("");
     const [openMenuOnMobile, setOpenMenuOnMobile] = useState(false);

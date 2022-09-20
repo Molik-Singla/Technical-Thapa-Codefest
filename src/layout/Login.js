@@ -16,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { isLogin, setIsLogin, setCartItems } = useContext(GlobalContext);
-    const [cookies, setCookie, removeCookie] = useCookies("login");
+    const [, setCookie, removeCookie] = useCookies("");
 
     const [loginOrSignup, setLoginOrSignup] = useState("login");
     const [loginData, setLoginData] = useState({

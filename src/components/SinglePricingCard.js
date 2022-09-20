@@ -1,7 +1,9 @@
 import React, { useContext, useEffect } from "react";
 
+// ✅ Context ----------------------------------------------------------------------------------------------
 import { GlobalContext } from "../context/Store";
 
+// ✅ Components -------------------------------------------------------------------------------------------
 import SinglePricingElem from "./SinglePricingElem";
 import { notifySuccess, notifyWarn } from "./../animations/TostifyFunctions";
 
@@ -17,10 +19,11 @@ const SinglePricingCard = ({
     additionalClassesToAdd,
     namePlateClassesToAd = "bg-secondary-color",
 }) => {
+    // ✅ States / Variables -------------------------------------------------------------------------------------------
     const { cartItems, setCartItems, isLogin } = useContext(GlobalContext);
+    const [, setCookie] = useCookies("");
 
-    const [cookies, setCookie] = useCookies("cart");
-
+    // ✅ Functions / Hooks -------------------------------------------------------------------------------------------
     function randomString(strLength, charSet) {
         var result = [];
 
@@ -31,7 +34,6 @@ const SinglePricingCard = ({
 
         return result.join("");
     }
-
     function handleAddToCart() {
         if (isLogin) {
             notifySuccess("Item added to Cart");
@@ -51,14 +53,15 @@ const SinglePricingCard = ({
         } else notifyWarn("Please do Login or Signup");
     }
 
+    // ✅ Useeffect -------------------------------------------------------------------------------------------
     useEffect(() => {
         if (isLogin) {
-            console.log(cartItems);
             setCookie("cart", cartItems, {
                 path: "/",
             });
         }
     }, [cartItems]);
+
     return (
         <div
             className={`single_card flex h-auto flex-col gap-7 rounded-2xl border-2 border-gray-200 bg-white font-open-sans-font shadow-lg transition-all duration-300 hover:scale-105 ${additionalClassesToAdd} w-[clamp(310px,100%,320px)]`}

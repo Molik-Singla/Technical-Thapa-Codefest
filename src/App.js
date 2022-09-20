@@ -15,7 +15,7 @@ import Tostify from "./animations/Tostify";
 
 const App = () => {
     // ✅ States / variables --------------------------------------------------------------------------------------
-    const [cookies, setCookie] = useCookies("login");
+    const [cookies] = useCookies("");
     const { setIsLogin, setCartItems } = useContext(GlobalContext);
 
     // ✅ useeffects --------------------------------------------------------------------------------------

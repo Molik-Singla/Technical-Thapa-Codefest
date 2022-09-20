@@ -8,7 +8,7 @@ import { notifySuccess } from "./../animations/TostifyFunctions";
 
 const SingleCartItem = ({ hostingName, hostingPrice, hostingRenewPrice, randomId }) => {
     // ✅ States / Variables --------------------------------------------------------------------------------------
-    const { cartItems, setCartItems } = useContext(GlobalContext);
+    const { setCartItems } = useContext(GlobalContext);
 
     // ✅ Functions / Hooks --------------------------------------------------------------------------------------
     function handleRemoveCartItem() {

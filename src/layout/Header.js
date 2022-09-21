@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
 
 // ✅ Context -------------------------------------------------------------------------------------------
 import { GlobalContext } from "../context/Store";
@@ -38,11 +38,12 @@ const Header = () => {
     }
 
     function listenScrollEvent() {
-        window.scrollY > 55 ? setHeaderAppearence("bg-secondary-color") : setHeaderAppearence("");
+        if (window.scrollY >= 55) setHeaderAppearence("bg-secondary-color");
+        else if (window.scrollY < 55) setHeaderAppearence("");
     }
 
     // ✅ UseEffects --------------------------------------------------------------------------------
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener("scroll", listenScrollEvent);
         return () => {
             window.removeEventListener("scroll", listenScrollEvent);
@@ -52,24 +53,29 @@ const Header = () => {
     return (
         <>
             <header
-                className={`header_section fixed top-0 z-20 flex h-14 w-full items-center justify-between ${headerAppearence} px-5 font-open-sans-font text-white transition-all duration-500 md:px-10`}
+                className={`header_section fixed top-0 z-20 flex h-14 w-full items-center justify-between ${headerAppearence} px-5 font-open-sans-font text-white md:px-10`}
             >
                 <div className="logo">
-                    <p className="text-1.5xl font-bold text-white md:text-2xl">Hostinger</p>
+                    <p className="font-['Lobster'] text-4xl font-light tracking-wide text-white">Hostinger</p>
                 </div>
-                <div className="hidden gap-6 md:flex lg:gap-20 ">
+                <div className="hidden gap-6 md:flex lg:gap-20">
                     <nav className="flex items-center gap-5 font-medium lg:gap-9">
-                        <button onClick={() => scrollToPricing.current.scrollIntoView({ behavior: "smooth" })}>Web Hosting</button>
-                        <button onClick={() => scrollToServices.current.scrollIntoView({ behavior: "smooth" })}>Services</button>
+                        <button
+                            className="transition-all duration-500 hover:scale-105 hover:font-semibold"
+                            onClick={() => scrollToPricing.current.scrollIntoView({ behavior: "smooth" })}
+                        >
+                            Web Hosting
+                        </button>
+                        <button
+                            className="transition-all duration-500 hover:scale-105 hover:font-semibold"
+                            onClick={() => scrollToServices.current.scrollIntoView({ behavior: "smooth" })}
+                        >
+                            Services
+                        </button>
                         <p>Email</p>
                         <p>Domain</p>
                     </nav>
                     <div className="login_cart flex h-full items-center gap-8">
-                        {/* <Link to="/login">
-                            <button className="rounded-full border-2 border-white py-[2px] px-7 font-rubik-font font-semibold transition-all duration-300 hover:bg-white hover:text-secondary-color">
-                                {cookies?.login?.isLogin === true ? "Logged In" : "Log in"}
-                            </button>
-                        </Link> */}
                         <Link to="/login">
                             <button className="animate_on_button_hover relative rounded-sm border-2 border-white py-[2px] px-7 font-rubik-font font-semibold  hover:border-transparent">
                                 <span className="absolute top-0 left-0 bg-white"></span>
@@ -80,12 +86,11 @@ const Header = () => {
                             </button>
                         </Link>
 
-                        {/* <button className="anim">Login</button> */}
                         <button
                             onClick={() => {
                                 setEnableCart(true);
                             }}
-                            className="flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-110"
+                            className="flex items-center gap-2 font-semibold transition-all duration-500 hover:scale-110"
                         >
                             <FiShoppingCart className="text-3xl" />
                             Cart
@@ -105,10 +110,26 @@ const Header = () => {
                                 <ImCross className="mr-2 cursor-pointer text-1.5xl" onClick={handleCloseMenuOnMobile} />
                             </div>
                             <div className="navs_links box-border flex h-full flex-col items-center gap-10 pt-10 text-2xl font-semibold text-white">
-                                <p className={`${openMenuOnMobile && "slide-in-right-4s"}`}>Home</p>
-                                <p className={`${openMenuOnMobile && "slide-in-right-5s"}`}>About Me</p>
-                                <p className={`${openMenuOnMobile && "slide-in-right-6s"}`}>Contact</p>
-                                <p className={`${openMenuOnMobile && "slide-in-right-7s"}`}>Services</p>
+                                <button
+                                    onClick={() => {
+                                        handleCloseMenuOnMobile();
+                                        scrollToPricing.current.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className={`${openMenuOnMobile && "slide-in-right-4s"}`}
+                                >
+                                    Web Hosting
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        handleCloseMenuOnMobile();
+                                        scrollToServices.current.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className={`${openMenuOnMobile && "slide-in-right-5s"}`}
+                                >
+                                    Services
+                                </button>
+                                <p className={`${openMenuOnMobile && "slide-in-right-6s"}`}>Email</p>
+                                <p className={`${openMenuOnMobile && "slide-in-right-7s"}`}>Domain</p>
                                 <Link to="/login">
                                     <button
                                         className={`rounded-full border-2 border-white py-[2px] px-7 font-rubik-font font-semibold transition-all duration-300 hover:bg-white hover:text-secondary-color ${
@@ -120,11 +141,12 @@ const Header = () => {
                                 </Link>
                                 <button
                                     onClick={() => {
+                                        handleCloseMenuOnMobile();
                                         setEnableCart(true);
                                     }}
                                     className={`flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-110 ${
                                         openMenuOnMobile && "slide-in-right-7s"
-                                    }`}
+                                    } hover:scale-105`}
                                 >
                                     <FiShoppingCart className="text-3xl" />
                                     Cart

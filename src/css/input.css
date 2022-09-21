@@ -7,7 +7,7 @@
     background: linear-gradient(16deg, rgba(17, 164, 239, 1) 0%, rgba(17, 190, 239, 1) 31%);
 }
 .section_background_gradient {
-    background: url("./../Images/SectionBg.svg") no-repeat;
+    background: url("./../../public/Images/SectionBg.svg") no-repeat;
     background-size: cover;
 }
 
@@ -148,12 +148,10 @@
 
 
 
-/* ✅ Animation on Button Hover */
-
+/* ✅ Animation on Button Hover --------------------------------------------------------------------------------------------------------*/
 .animate_on_button_hover:hover>span:nth-child(1) , .animate_on_button_hover:hover>span:nth-child(2){
     width: 0%;
     height: 2px;
-    /* background-color: white;  */
 
     animation-name: animate_x;
     animation-duration: 1.2s;
@@ -163,13 +161,11 @@
 .animate_on_button_hover:hover>span:nth-child(3),.animate_on_button_hover:hover>span:nth-child(4) {
     width: 2px;
     height: 0%;
-    /* background-color: white; */
 
     animation-name: animate_y;
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    /* animation-delay: 660ms; */
 }
 @keyframes animate_x {
     0%{

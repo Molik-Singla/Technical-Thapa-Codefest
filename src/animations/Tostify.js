@@ -15,7 +15,8 @@ function Tostify({ children }) {
         <>
             <ToastContainer
                 toastClassName={({ type }) =>
-                    contextClass[type || "default"] + " relative flex p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer flex-row"
+                    contextClass[type || "default"] +
+                    " relative flex p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer flex-row mb-3"
                 }
                 bodyClassName={() => "text-sm font-white font-medium block p-3 flex flex-row z-[1000]"}
                 position="top-center"

@@ -15,13 +15,15 @@ import Tostify from "./animations/Tostify";
 
 const App = () => {
     // ✅ States / variables --------------------------------------------------------------------------------------
-    const [cookies] = useCookies("");
+    const [cookies, setCookie] = useCookies("");
     const { setIsLogin, setCartItems } = useContext(GlobalContext);
 
     // ✅ useeffects --------------------------------------------------------------------------------------
     useEffect(() => {
-        if (cookies?.cart?.length > 0) setCartItems(cookies.cart);
-        if (cookies?.login?.isLogin === true) setIsLogin(true);
+        if (cookies?.isLogin === "true") {
+            setIsLogin(true);
+            if (cookies?.cart?.length > 0) setCartItems(cookies.cart);
+        }
     }, []);
 
     return (

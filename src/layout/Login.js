@@ -6,7 +6,7 @@ import { GlobalContext } from "../context/Store";
 // ✅ Components --------------------------------------------------------------------------------------
 import { useNavigate, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { notifySuccess } from "./../animations/TostifyFunctions";
+import { notifySuccess, notifyError } from "./../animations/TostifyFunctions";
 
 // ✅ icons --------------------------------------------------------------------------------------
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
@@ -16,13 +16,12 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { isLogin, setIsLogin, setCartItems } = useContext(GlobalContext);
-    const [, setCookie, removeCookie] = useCookies("");
+    const [cookies, setCookie, removeCookie] = useCookies("");
 
     const [loginOrSignup, setLoginOrSignup] = useState("login");
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
-        rememberMe: false,
     });
 
     // ✅ Functions / Hooks --------------------------------------------------------------------------------------
@@ -35,33 +34,48 @@ const Login = () => {
 
     function handleLoginSignup(evt) {
         document.title = "Hostinger";
+
         evt.preventDefault();
-        // If user tick on rememberMe then save info in Cookie else not
-        if (loginData.rememberMe)
+        // Do login after checking Credentials and update cookies and cart
+        if (loginOrSignup === "login") {
+            if (cookies?.login?.email === loginData.email && cookies?.login?.password === loginData.password) {
+                setIsLogin(true);
+                setCookie("isLogin", true, {
+                    path: "/",
+                });
+                if (cookies?.cart?.length > 0) setCartItems(cookies?.cart);
+                document.body.style.overflow = "visible";
+                navigate("/");
+            } else notifyError("Wrong Credentials");
+        } else {
+            // else do Signup
             setCookie(
                 "login",
-                { ...loginData, isLogin: true },
+                { ...loginData },
                 {
                     path: "/",
                 }
             );
-
+            setCookie("isLogin", true, {
+                path: "/",
+            });
+            setIsLogin(true);
+            document.body.style.overflow = "visible";
+            navigate("/");
+        }
         setLoginData({
             email: "",
             password: "",
-            rememberMe: false,
         });
-        notifySuccess(loginOrSignup === "login" ? "Login Successfull" : "Signup Successfull");
-        document.body.style.overflow = "visible";
-        setIsLogin(true);
-        navigate("/");
     }
 
     function handleLogout() {
         document.title = "Hostinger";
         document.body.style.overflow = "visible";
-        removeCookie("login");
-        removeCookie("cart");
+
+        setCookie("isLogin", false, {
+            path: "/",
+        });
         setIsLogin(false);
         setCartItems([]);
         notifySuccess("Log out Successfull");
@@ -77,7 +91,7 @@ const Login = () => {
             <div
                 className={`header_section fixed top-0 z-50 flex h-14 w-full items-center bg-secondary-color px-5 font-open-sans-font text-lg font-bold text-white transition-all duration-500 md:justify-center md:px-10 md:text-2xl `}
             >
-                <button
+                <div
                     onClick={() => {
                         document.body.style.overflow = "visible";
                     }}
@@ -91,7 +105,7 @@ const Login = () => {
                             <BsFillArrowLeftCircleFill className="absolute left-5 top-5 md:top-4" />
                         </button>
                     </Link>
-                </button>
+                </div>
                 <p className="ml-11 md:ml-0">Login / Signup</p>
                 {isLogin && (
                     <button
@@ -127,7 +141,7 @@ const Login = () => {
                                 onChange={handleOnChange}
                             />
                         </div>
-                        <div className="mb-6">
+                        <div className="mb-6 mt-10">
                             <label
                                 htmlFor="password"
                                 className="mb-2 block font-open-sans-font text-base font-semibold text-gray-900 dark:text-gray-300"
@@ -144,24 +158,8 @@ const Login = () => {
                                 onChange={handleOnChange}
                             />
                         </div>
-                        <div className="mb-6 flex items-start">
-                            <div className="flex h-5 items-center">
-                                <input
-                                    id="remember"
-                                    type="checkbox"
-                                    value=""
-                                    className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
-                                    required=""
-                                    name="rememberMe"
-                                    checked={loginData.rememberMe}
-                                    onChange={handleOnChange}
-                                />
-                            </div>
-                            <label htmlFor="remember" className="ml-2 text-base font-medium text-gray-900 dark:text-gray-300">
-                                Remember me
-                            </label>
-                        </div>
-                        <div className="flex w-full justify-end">
+
+                        <div className="mt-6 flex w-full justify-end">
                             <button
                                 onClick={(evt) => handleLoginSignup(evt)}
                                 type="submit"

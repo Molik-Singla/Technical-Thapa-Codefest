@@ -16,6 +16,8 @@
 
     ✅ Login/ Signup and Logout ( Login/ Signup info will saved in Cookies , Login triggers Cart
         update if you added Items in Cart Earlier ).
+        
+    ✅ Logout Functionality ( Logout button will only appear if we have Login, Appears in Login Section ).
 
     ✅ Cart, need to Login/ Signup to Add items ( Can add or Remove items in Cart,  Items will
         also saved in Cookies ).

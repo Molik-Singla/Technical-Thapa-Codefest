@@ -38,9 +38,6 @@ module.exports = {
             // => @media (min-width: 480px) { ... }
         },
         extend: {
-            boxShadow: {
-                "primary-shadow": "0px 4px 4px 0px rgba(134, 104, 253, .5)",
-            },
             fontFamily: {
                 "open-sans-font": ["Open Sans", "sans-serif"],
                 "rubik-font": ["Rubik", "sans-serif"],

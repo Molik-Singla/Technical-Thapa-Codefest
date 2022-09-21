@@ -124,7 +124,7 @@ const Header = () => {
                                             openMenuOnMobile && "slide-in-right-7s"
                                         }`}
                                     >
-                                        {cookies?.login?.isLogin === true ? "Logged In" : "Log in"}
+                                        {isLogin === true ? "Logged In" : "Log in"}
                                     </button>
                                 </Link>
                                 <button

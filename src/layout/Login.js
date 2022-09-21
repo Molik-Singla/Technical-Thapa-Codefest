@@ -16,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { isLogin, setIsLogin, setCartItems } = useContext(GlobalContext);
-    const [cookies, setCookie, removeCookie] = useCookies("");
+    const [cookies, setCookie] = useCookies("");
 
     const [loginOrSignup, setLoginOrSignup] = useState("login");
     const [loginData, setLoginData] = useState({
@@ -45,6 +45,8 @@ const Login = () => {
                 });
                 if (cookies?.cart?.length > 0) setCartItems(cookies?.cart);
                 document.body.style.overflow = "visible";
+                notifySuccess("Log in Successfull");
+
                 navigate("/");
             } else notifyError("Wrong Credentials");
         } else {
@@ -60,6 +62,8 @@ const Login = () => {
                 path: "/",
             });
             setIsLogin(true);
+            notifySuccess("Sign up Successfull");
+
             document.body.style.overflow = "visible";
             navigate("/");
         }

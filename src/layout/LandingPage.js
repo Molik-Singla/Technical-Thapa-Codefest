@@ -5,9 +5,9 @@ import Home from "./Home";
 import Services from "./Services";
 import Testimonials from "./Testimonials";
 import PricingPlans from "./PricingPlans";
+import Footer from "./Footer";
 
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
 
 const LandingPage = () => {
     return (

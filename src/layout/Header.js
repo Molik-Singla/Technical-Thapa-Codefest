@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 // ✅ Context -------------------------------------------------------------------------------------------
 import { GlobalContext } from "../context/Store";
@@ -15,9 +15,9 @@ import { ImCross } from "react-icons/im";
 const Header = () => {
     // ✅ States / Variables --------------------------------------------------------------------------------
     const [cookies] = useCookies("");
+
     const { setEnableCart, isLogin, scrollToServices, scrollToPricing } = useContext(GlobalContext);
 
-    const [headerAppearence, setHeaderAppearence] = useState("");
     const [openMenuOnMobile, setOpenMenuOnMobile] = useState(false);
     const [closeMenu, setCloseMenu] = useState(false);
 
@@ -37,23 +37,10 @@ const Header = () => {
         }, 500);
     }
 
-    function listenScrollEvent() {
-        if (window.scrollY >= 55) setHeaderAppearence("bg-secondary-color");
-        else if (window.scrollY < 55) setHeaderAppearence("");
-    }
-
-    // ✅ UseEffects --------------------------------------------------------------------------------
-    useLayoutEffect(() => {
-        window.addEventListener("scroll", listenScrollEvent);
-        return () => {
-            window.removeEventListener("scroll", listenScrollEvent);
-        };
-    }, []);
-
     return (
         <>
             <header
-                className={`header_section fixed top-0 z-20 flex h-14 w-full items-center justify-between ${headerAppearence} px-5 font-open-sans-font text-white md:px-10`}
+                className={`header_section fixed top-0 z-20 flex h-14 w-full items-center justify-between bg-secondary-color px-5 font-open-sans-font text-white shadow-2xl md:px-10`}
             >
                 <div className="logo">
                     <p className="font-['Lobster'] text-4xl font-light tracking-wide text-white">Hostinger</p>
@@ -88,6 +75,7 @@ const Header = () => {
 
                         <button
                             onClick={() => {
+                                document.title = "Cart | Hostinger";
                                 setEnableCart(true);
                             }}
                             className="flex items-center gap-2 font-semibold transition-all duration-500 hover:scale-110"
@@ -142,6 +130,8 @@ const Header = () => {
                                 <button
                                     onClick={() => {
                                         handleCloseMenuOnMobile();
+                                        document.title = "Cart | Hostinger";
+
                                         setEnableCart(true);
                                     }}
                                     className={`flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-110 ${

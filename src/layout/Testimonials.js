@@ -13,7 +13,6 @@ const Testimonials = () => {
                 <div className="flex h-auto w-full justify-center px-0 md:w-[90%] md:px-2 lg:order-1 lg:max-w-max">
                     <div className="carosouel_div relative flex h-auto w-screen flex-col items-center gap-5 px-0 md:px-1 md:py-12 lg:flex-row">
                         <SingleTestimonial
-                            key={Math.random()}
                             userName={"Robert James"}
                             description={
                                 " If you're a beginner, then you can trust this guy and can put your time into his content. I can assure you that it'll be worth it."
@@ -21,7 +20,6 @@ const Testimonials = () => {
                             image={"https://picsum.photos/id/8/64"}
                         />
                         <SingleTestimonial
-                            key={Math.random()}
                             userName={"Richard Joseph"}
                             description={"This website and this content is very interesting and worth it. You must try our services at least once."}
                             image={"https://picsum.photos/id/23/64"}

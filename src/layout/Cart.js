@@ -21,6 +21,7 @@ const Cart = () => {
                     <p className="font-open-sans-font text-1.5xl font-semibold">Cart</p>
                     <button
                         onClick={() => {
+                            document.title = "Hostinger";
                             setEnableCart(false);
                         }}
                     >
@@ -48,6 +49,7 @@ const Cart = () => {
                     or
                     <button
                         onClick={() => {
+                            document.title = "Hostinger";
                             setEnableCart(false);
                         }}
                         className="ml-3 font-rubik-font font-bold text-primary-color"

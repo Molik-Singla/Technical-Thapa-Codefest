@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // ✅ Context --------------------------------------------------------------------------------------
 import { GlobalContext } from "../context/Store";
@@ -32,8 +32,11 @@ const Login = () => {
             return { ...prev, [name]: type === "checkbox" ? checked : value };
         });
     }
+
     function handleLoginSignup(evt) {
+        document.title = "Hostinger";
         evt.preventDefault();
+        // If user tick on rememberMe then save info in Cookie else not
         if (loginData.rememberMe)
             setCookie(
                 "login",
@@ -55,6 +58,7 @@ const Login = () => {
     }
 
     function handleLogout() {
+        document.title = "Hostinger";
         document.body.style.overflow = "visible";
         removeCookie("login");
         removeCookie("cart");
@@ -63,6 +67,10 @@ const Login = () => {
         notifySuccess("Log out Successfull");
         navigate("/");
     }
+
+    useEffect(() => {
+        document.title = "Login | Hostinger";
+    }, []);
 
     return (
         <div>
@@ -75,7 +83,13 @@ const Login = () => {
                     }}
                 >
                     <Link to="/">
-                        <BsFillArrowLeftCircleFill className="absolute left-5 top-5 md:top-4" />
+                        <button
+                            onClick={() => {
+                                document.title = "Hostinger";
+                            }}
+                        >
+                            <BsFillArrowLeftCircleFill className="absolute left-5 top-5 md:top-4" />
+                        </button>
                     </Link>
                 </button>
                 <p className="ml-11 md:ml-0">Login / Signup</p>

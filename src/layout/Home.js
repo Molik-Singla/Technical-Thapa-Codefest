@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// ✅ Context  -------------------------------------------------------------------------------------------
+import { GlobalContext } from "../context/Store";
 
 // ✅ Icons  -------------------------------------------------------------------------------------------
 import { TiTick } from "react-icons/ti";
 
 const Home = () => {
+    // ✅ States / Variables  -------------------------------------------------------------------------------------------
+    const { scrollToServices } = useContext(GlobalContext);
+
     return (
         <div className="hero_section box-border w-full bg-white md:h-[clamp(37rem,100vh,44rem)]">
             <div className="little_bit_translate section_background_gradient relative box-border flex h-full w-full flex-col gap-3 px-5 pt-20 md:flex-row md:px-10 md:pt-14">
@@ -13,19 +19,22 @@ const Home = () => {
                     <p className="text-center font-semibold text-gray-200">
                         Make moves with a free domain and SSL included with a four-year subscription.
                     </p>
-                    <button className="animate_on_button_hover relative mt-8 rounded-sm bg-secondary-color px-12 py-2 font-rubik-font text-lg font-medium text-white shadow-xl transition-all duration-300">
+                    <button
+                        onClick={() => scrollToServices.current.scrollIntoView({ behavior: "smooth" })}
+                        className="animate_on_button_hover relative mt-8 rounded-sm bg-secondary-color px-10 py-2 font-rubik-font text-lg font-medium text-white shadow-xl transition-all duration-300"
+                    >
                         <span className="absolute top-0 left-0 bg-white"></span>
                         <span className="absolute bottom-0 right-0 bg-white"></span>
                         <span className="absolute bottom-0 left-0 bg-white"></span>
                         <span className="absolute top-0 right-0 bg-white"></span>
-                        Get Started
+                        Check Services
                     </button>
 
-                    <p className="flex items-center gap-2 text-center font-medium text-white">
+                    <p className="mt-2 flex items-center gap-2 text-center font-medium text-white">
                         <TiTick className="text-2xl text-green-600" /> Get exclusive 30-day money-back guarantee
                     </p>
                 </div>
-                <div className="mt-2 flex h-[80vh]  w-full items-center justify-center pb-8 md:w-1/2">
+                <div className="mt-2 flex h-[min(80vh,100%)] w-full items-center justify-center pb-8 pt-10 md:w-1/2 md:py-2">
                     <lottie-player
                         src="https://assets3.lottiefiles.com/packages/lf20_isd8rnbz.json"
                         background="transparent"

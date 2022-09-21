@@ -31,8 +31,12 @@ const SingleCartItem = ({ hostingName, hostingPrice, hostingRenewPrice, randomId
             <div className="mt-2 flex justify-end">
                 <button
                     onClick={handleRemoveCartItem}
-                    className="rounded-2xl bg-secondary-color px-7 py-1 font-rubik-font text-lg font-medium text-white"
+                    className="animate_on_button_hover relative rounded-sm bg-secondary-color px-7 py-1 font-rubik-font text-lg font-medium text-white hover:bg-white hover:text-secondary-color"
                 >
+                    <span className="absolute top-0 left-0 bg-secondary-color"></span>
+                    <span className="absolute bottom-0 right-0 bg-secondary-color"></span>
+                    <span className="absolute bottom-0 left-0 bg-secondary-color"></span>
+                    <span className="absolute top-0 right-0 bg-secondary-color"></span>
                     Remove
                 </button>
             </div>

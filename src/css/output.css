@@ -584,10 +584,6 @@ video {
   left: -1rem;
 }
 
-.bottom-3 {
-  bottom: 0.75rem;
-}
-
 .top-0 {
   top: 0px;
 }
@@ -602,6 +598,10 @@ video {
 
 .right-0 {
   right: 0px;
+}
+
+.bottom-3 {
+  bottom: 0.75rem;
 }
 
 .left-5 {
@@ -916,12 +916,12 @@ video {
   border-radius: 9999px;
 }
 
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .rounded-xl {

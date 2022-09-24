@@ -156,7 +156,8 @@
     animation-name: animate_x;
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease;
+    animation-direction: alternate;
 }
 .animate_on_button_hover:hover>span:nth-child(3),.animate_on_button_hover:hover>span:nth-child(4) {
     width: 2px;
@@ -165,7 +166,8 @@
     animation-name: animate_y;
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease;
+    animation-direction: alternate;
 }
 @keyframes animate_x {
     0%{
